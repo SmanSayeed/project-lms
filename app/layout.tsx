@@ -23,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${googleSans.className} antialiased`}>
+      <body
+        className={`${googleSans.className} antialiased min-h-screen flex flex-col`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -33,8 +35,10 @@ export default function RootLayout({
           <header className="sticky top-0 backdrop-blur-sm z-50 bg-white/60 dark:bg-[#243343]/70">
             <Navbar />
           </header>
-          <main className=" max-w-7xl mx-auto p-5 lg:px-14">{children}</main>
-          <footer className=" w-full">
+
+          <main className="flex-1 max-w-7xl mx-auto w-full">{children}</main>
+
+          <footer>
             <Footer />
           </footer>
         </ThemeProvider>

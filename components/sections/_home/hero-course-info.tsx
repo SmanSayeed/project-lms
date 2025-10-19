@@ -3,7 +3,7 @@ import React from "react";
 export default function HeroCourseInfo() {
   return (
     <div className=" mt-16">
-      <div className="grid grid-cols-2 lg:grid-cols-3 items-center gap-8 lg:gap-x-15">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 place-items-center gap-y-8 lg:gap-x-15">
         {courseInfo.map((course) => (
           <div key={course.id} className="">
             <h1 className=" text-4xl relative font-bold opacity-90">

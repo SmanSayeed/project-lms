@@ -4,7 +4,7 @@ import React from "react";
 
 export default function HeroCtaButtons() {
   return (
-    <div className=" flex flex-row items-center gap-x-5 mt-8 justify-center md:justify-start">
+    <div className=" flex flex-row items-center gap-x-5 mt-8 justify-center xl:justify-start xl:pl-14">
       <Button size={"lg"} className=" py-6.5 px-4 font-semibold">
         start learning
       </Button>

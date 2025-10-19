@@ -3,7 +3,7 @@ import React from "react";
 
 export default function AuthButtons() {
   return (
-    <div className=" flex items-center gap-x-2 flex-row">
+    <div className="items-center gap-x-2 flex-row hidden md:flex">
       <Button
         variant={"outline"}
         className=" font-semibold dark:border dark:border-gray-600 dark:hover:opacity-80"
