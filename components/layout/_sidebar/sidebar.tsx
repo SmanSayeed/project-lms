@@ -48,10 +48,10 @@ export default function SidebarSettings() {
             <SidebarThemeCard />
 
             {/* contrast & compact */}
-            <div className=" grid grid-cols-2 gap-3 mt-10">
+            {/* <div className=" grid grid-cols-2 gap-3 mt-10">
               <SidebarContrastCard />
               <SidebarCompactCard />
-            </div>
+            </div> */}
 
             {/* Layout change */}
             <div className="">
