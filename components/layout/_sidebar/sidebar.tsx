@@ -12,9 +12,8 @@ import SettingsButton from "../_header/ui/settings-button";
 import { Button } from "@/components/ui/button";
 import { Fullscreen, RotateCw } from "lucide-react";
 import SidebarThemeCard from "./sidebar-theme-card";
-import SidebarContrastCard from "./sidebar-contrast-card";
-import SidebarCompactCard from "./sidebar-compact-card";
 import SidebarLayoutCard from "./sidebar-layout-card";
+import SidebarFontChangeCard from "./sidebar-font-change-card";
 
 export default function SidebarSettings() {
   return (
@@ -54,8 +53,12 @@ export default function SidebarSettings() {
             </div> */}
 
             {/* Layout change */}
-            <div className="">
+            <div className="mt-10">
               <SidebarLayoutCard/>
+            </div>
+
+            <div className="mt-10">
+              <SidebarFontChangeCard/>
             </div>
           </div>
         </div>
