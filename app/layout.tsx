@@ -30,11 +30,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <header className="sticky top-0 backdrop-blur-sm z-50 border-b">
+          <header className="sticky top-0 backdrop-blur-sm z-50 bg-white/60 dark:bg-[#243343]/70">
             <Navbar />
           </header>
           <main className=" max-w-7xl mx-auto p-5 lg:px-14">{children}</main>
-          <footer>
+          <footer className=" w-full">
             <Footer />
           </footer>
         </ThemeProvider>
