@@ -14,6 +14,7 @@ import { Fullscreen, RotateCw } from "lucide-react";
 import SidebarThemeCard from "./sidebar-theme-card";
 import SidebarContrastCard from "./sidebar-contrast-card";
 import SidebarCompactCard from "./sidebar-compact-card";
+import SidebarLayoutCard from "./sidebar-layout-card";
 
 export default function SidebarSettings() {
   return (
@@ -50,6 +51,11 @@ export default function SidebarSettings() {
             <div className=" grid grid-cols-2 gap-3 mt-10">
               <SidebarContrastCard />
               <SidebarCompactCard />
+            </div>
+
+            {/* Layout change */}
+            <div className="">
+              <SidebarLayoutCard/>
             </div>
           </div>
         </div>

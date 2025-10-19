@@ -24,7 +24,7 @@ export default function LanguageSelect() {
             width={30}
             height={30}
           />
-          Bangla
+          BN
         </SelectItem>
         <SelectItem value="english">
           <Image
@@ -35,7 +35,7 @@ export default function LanguageSelect() {
             width={30}
             height={30}
           />
-          English
+          EN
         </SelectItem>
       </SelectContent>
     </Select>
