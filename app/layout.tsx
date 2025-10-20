@@ -6,9 +6,17 @@ import { ThemeProvider } from "@/components/layout/_theme/theme-provider";
 import { Footer } from "@/components/layout/_footer/footer";
 
 const googleSans = localFont({
-  src: "../public/fonts/googleSans-reguler.woff",
-  // weight: "400",
-  // style: "normal",
+  src: [
+    {
+      path: "../public/fonts/GoogleSans-Bold.ttf",
+    },
+    {
+      path: "../public/fonts/GoogleSans-Medium.ttf",
+    },
+    {
+      path: "../public/fonts/GoogleSans-Regular.ttf",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -32,13 +40,18 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <header className="sticky top-0 backdrop-blur-sm z-50 bg-white/60 dark:bg-[#243343]/70">
+          <header
+            suppressHydrationWarning
+            className="sticky top-0 backdrop-blur-sm z-50 bg-white/60 dark:bg-[#243343]/70"
+          >
             <Navbar />
           </header>
 
-          <main className="flex-1 max-w-7xl mx-auto w-full">{children}</main>
+          <main className="flex-1 max-w-7xl mx-auto w-full px-5 lg:px-14">
+            {children}
+          </main>
 
-          <footer>
+          <footer suppressHydrationWarning>
             <Footer />
           </footer>
         </ThemeProvider>

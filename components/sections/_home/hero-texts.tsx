@@ -4,7 +4,7 @@ export default function HeroTexts() {
   return (
     <div className=" mt-5 xl:mt-10  lg:px-14">
       <div>
-        <h1 className="text-4xl md:text-5xl lg:text-7xl leading-relaxed font-extrabold">
+        <h1 className="text-4xl md:text-5xl lg:text-7xl leading-20 font-extrabold">
           Create your website today with{" "}
           <span className="bg-gradient-to-r from-orange-500 to-indigo-400 text-transparent bg-clip-text">
             ZONE

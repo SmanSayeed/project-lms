@@ -1,10 +1,15 @@
+"use client";
 import React from "react";
 import AuthButtons from "./ui/auth-buttons";
 import SidebarSettings from "../_sidebar/sidebar";
 import LanguageSelect from "./ui/language-select";
 import MainLogo from "@/components/common/logos/main-logo";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathName = usePathname();
+  const privatePaths = pathName.startsWith("/register");
+
   return (
     <div className="flex items-center justify-between lg:px-14 p-5 max-w-7xl mx-auto">
       {/* Left-side - LOGO */}
@@ -22,7 +27,7 @@ export default function Navbar() {
         <SidebarSettings />
 
         {/* auth buttons */}
-        <AuthButtons />
+        {!privatePaths && <AuthButtons />}
       </div>
     </div>
   );
