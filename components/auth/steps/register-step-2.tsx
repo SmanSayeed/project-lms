@@ -1,6 +1,6 @@
 "use client";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import StepsCountCard from "./common/step-count-card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -22,7 +22,7 @@ import {
 } from "@/lib/schema";
 
 export default function RegisterStepTwo() {
-  const [date, setDate] = React.useState<Date>();
+  const [genderErr, setGenderErr] = useState(true);
 
   const {
     handleSubmit,
@@ -40,7 +40,6 @@ export default function RegisterStepTwo() {
       console.error(error);
     }
   };
-
 
   return (
     <Card className=" max-w-[420px] shadow-md w-full mx-auto dark:bg-[#101f31]">
@@ -95,10 +94,6 @@ export default function RegisterStepTwo() {
               <Label className=" mb-1.5">Date of birth</Label>
 
               <Input
-                // onChange={(e) => {
-                //   console.log("Date \n", e.target.value);
-                //   setValue("birth_date", e.target.value);
-                // }}
                 {...register("birth_date")}
                 type="date"
               />
@@ -112,9 +107,10 @@ export default function RegisterStepTwo() {
             <div className="mb-4">
               <Label className=" mb-1.5">Gender</Label>
               <Select
-                onValueChange={(val: "men" | "women") =>
-                  setValue("gender", val)
-                }
+                onValueChange={(val: "men" | "women") => {
+                  setValue("gender", val);
+                  setGenderErr(false);
+                }}
               >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select gender" />
@@ -127,7 +123,8 @@ export default function RegisterStepTwo() {
                   </SelectGroup>
                 </SelectContent>
               </Select>
-              {errors && errors.gender && (
+
+              {genderErr && errors && errors.gender && (
                 <p className="text-sm font-medium text-red-500 my-1.5">
                   {errors.gender.message}
                 </p>
