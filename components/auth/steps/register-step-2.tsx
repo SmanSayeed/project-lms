@@ -94,10 +94,6 @@ export default function RegisterStepTwo() {
               <Label className=" mb-1.5">Date of birth</Label>
 
               <Input
-                // onChange={(e) => {
-                //   console.log("Date \n", e.target.value);
-                //   setValue("birth_date", e.target.value);
-                // }}
                 {...register("birth_date")}
                 type="date"
               />
@@ -127,17 +123,6 @@ export default function RegisterStepTwo() {
                   </SelectGroup>
                 </SelectContent>
               </Select>
-
-              {/* <select
-
-                // defaultValue={""}
-                {...register("gender")}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              >
-                <option value={""}>Select gender</option>
-                <option value="men">Men</option>
-                <option value="women">Women</option>
-              </select> */}
 
               {genderErr && errors && errors.gender && (
                 <p className="text-sm font-medium text-red-500 my-1.5">
