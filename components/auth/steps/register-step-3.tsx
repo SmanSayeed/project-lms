@@ -22,7 +22,7 @@ export default function RegisterStepThree() {
     resolver: zodResolver(RegisterSchemaStepThree),
   });
 
-  const router = useRouter()
+  const router = useRouter();
 
   const onSubmit = async (data: RegisterSchemaStepThreeInput) => {
     try {
@@ -54,7 +54,7 @@ export default function RegisterStepThree() {
 
             {/* inputs */}
 
-            <div className="mb-4 mt-16 relative">
+            <div className="mb-3 mt-16 relative">
               <Label className=" mb-1.5">Username</Label>
               <Input
                 {...register("username")}
@@ -62,16 +62,17 @@ export default function RegisterStepThree() {
                 // placeholder="@shikkha.dev"
               />
               {/* @shikkha.devv placeholder */}
-              <span className=" absolute top-[34%] right-[4%] opacity-60">
+              <span className=" absolute top-[45%] right-[4%] opacity-60">
                 @shikkha.dev
               </span>
-
-              {errors && errors.username && (
-                <p className="text-sm font-medium text-red-500 dark:text-red-400 my-1.5">
-                  {errors.username.message}
-                </p>
-              )}
             </div>
+
+            {errors && errors.username && (
+              <p className="text-sm font-medium text-red-500 dark:text-red-400 mb-2">
+                {errors.username.message}
+              </p>
+            )}
+
             <Button
               disabled={isSubmitting}
               type="submit"

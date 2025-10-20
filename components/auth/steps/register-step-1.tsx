@@ -30,7 +30,7 @@ import { useRouter } from "next/router";
 export default function RegisterStepOne() {
   const [simValue, setSimValue] = useState<string | undefined>(undefined);
   
-  const router = useRouter()
+  // const router = useRouter()
 
   const {
     handleSubmit,

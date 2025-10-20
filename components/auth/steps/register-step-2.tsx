@@ -1,6 +1,6 @@
 "use client";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import StepsCountCard from "./common/step-count-card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -22,7 +22,7 @@ import {
 } from "@/lib/schema";
 
 export default function RegisterStepTwo() {
-  const [date, setDate] = React.useState<Date>();
+  const [genderErr, setGenderErr] = useState(true);
 
   const {
     handleSubmit,
@@ -40,7 +40,6 @@ export default function RegisterStepTwo() {
       console.error(error);
     }
   };
-
 
   return (
     <Card className=" max-w-[420px] shadow-md w-full mx-auto dark:bg-[#101f31]">
@@ -112,9 +111,10 @@ export default function RegisterStepTwo() {
             <div className="mb-4">
               <Label className=" mb-1.5">Gender</Label>
               <Select
-                onValueChange={(val: "men" | "women") =>
-                  setValue("gender", val)
-                }
+                onValueChange={(val: "men" | "women") => {
+                  setValue("gender", val);
+                  setGenderErr(false);
+                }}
               >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select gender" />
@@ -127,7 +127,19 @@ export default function RegisterStepTwo() {
                   </SelectGroup>
                 </SelectContent>
               </Select>
-              {errors && errors.gender && (
+
+              {/* <select
+
+                // defaultValue={""}
+                {...register("gender")}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option value={""}>Select gender</option>
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+              </select> */}
+
+              {genderErr && errors && errors.gender && (
                 <p className="text-sm font-medium text-red-500 my-1.5">
                   {errors.gender.message}
                 </p>
