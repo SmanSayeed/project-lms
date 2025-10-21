@@ -8,7 +8,8 @@ import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const pathName = usePathname();
-  const privatePaths = pathName.startsWith("/register");
+  const privatePaths =
+    pathName.startsWith("/register") || pathName.startsWith("/login");
 
   return (
     <div className="flex items-center justify-between lg:px-14 p-5 max-w-7xl mx-auto">

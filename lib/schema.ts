@@ -53,3 +53,20 @@ export const RegisterSchemaStepThree = z.object({
 export type RegisterSchemaStepThreeInput = z.infer<
   typeof RegisterSchemaStepThree
 >;
+
+// login schema
+
+export const LoginSchema = z.object({
+  username: z
+    .string()
+    .refine((uname) => uname.trim() !== "", {
+      message: "Please enter your username",
+    })
+    .refine((uname) => !uname.startsWith("@shikkha.dev"), {
+      message: "Username cannot start with or contain '@shikkha.dev' ",
+    })
+    .min(5, { message: "Username has to be at least 5 characters long" })
+    .max(30, { message: "Username must be under 30 characters" }),
+});
+
+export type LoginSchemaInput = z.infer<typeof LoginSchema>;
