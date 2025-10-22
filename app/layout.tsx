@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/layout/_header/navbar";
 import { ThemeProvider } from "@/components/layout/_theme/theme-provider";
 import { Footer } from "@/components/layout/_footer/footer";
+import ReduxProvider from "@/redux/provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const googleSans = localFont({
   src: [
@@ -40,20 +42,23 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <header
-            suppressHydrationWarning
-            className="sticky top-0 backdrop-blur-sm z-50 bg-white/60 dark:bg-[#243343]/70"
-          >
-            <Navbar />
-          </header>
+          <ReduxProvider>
+            <header
+              suppressHydrationWarning
+              className="sticky top-0 backdrop-blur-sm z-50 bg-white/60 dark:bg-[#243343]/70"
+            >
+              <Navbar />
+            </header>
 
-          <main className="flex-1 max-w-7xl mx-auto w-full px-5 lg:px-14">
-            {children}
-          </main>
+            <main className="flex-1 max-w-7xl mx-auto w-full px-5 lg:px-14">
+              {children}
+              <Toaster/>
+            </main>
 
-          <footer suppressHydrationWarning>
-            <Footer />
-          </footer>
+            <footer suppressHydrationWarning>
+              <Footer />
+            </footer>
+          </ReduxProvider>
         </ThemeProvider>
       </body>
     </html>

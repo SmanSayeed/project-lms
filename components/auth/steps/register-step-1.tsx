@@ -25,12 +25,15 @@ import {
   RegisterSchemaStepOne,
   RegisterSchemaStepOneInput,
 } from "@/lib/schema";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { setRegistrationData, setStepOne } from "@/redux/reducers/authSlice";
+import { RootState } from "@/redux/store";
 
 export default function RegisterStepOne() {
   const [simValue, setSimValue] = useState<string | undefined>(undefined);
-  
-  // const router = useRouter()
+
+  const router = useRouter();
 
   const {
     handleSubmit,
@@ -41,16 +44,19 @@ export default function RegisterStepOne() {
     resolver: zodResolver(RegisterSchemaStepOne),
   });
 
-  // ✅ watch the number field instead of onChange
   const trackNumber = watch("number");
+  const dispatch = useDispatch();
 
   const onSubmit = (data: RegisterSchemaStepOneInput) => {
-    try {
-      
-      console.log("Validated data \n", data);
-    } catch (error) {
-      console.error(error);
-    }
+    dispatch(
+      setRegistrationData({
+        mobile: data.number.toString(),
+      })
+    );
+    dispatch(setStepOne(true));
+
+    router.push("/register/step-2");
+    console.log("Validated data \n", data);
   };
 
   // Detect sim provider

@@ -12,6 +12,11 @@ import {
   RegisterSchemaStepThreeInput,
 } from "@/lib/schema";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { setRegistrationData, setStepThree } from "@/redux/reducers/authSlice";
+import { RootState } from "@/redux/store";
+import { toast } from "sonner";
+import { useRegisterMutation } from "@/redux/api/authApi";
 
 export default function RegisterStepThree() {
   const {
@@ -24,12 +29,23 @@ export default function RegisterStepThree() {
 
   const router = useRouter();
 
+  const dispatch = useDispatch();
+
+  const prevStepInfo = useSelector(
+    (state: RootState) => state.auth.registrationData
+  );
+
   const onSubmit = async (data: RegisterSchemaStepThreeInput) => {
     try {
-      console.log("Validated data \n", data);
-      // router.push("")
+
+      // useRegisterMutation({
+      //   firstName:prevStepInfo
+      // });
+
+      dispatch(setStepThree(true));
+      // router.push("/login");
     } catch (error) {
-      console.error(error);
+      toast.error(error instanceof Error ? error.message : "Server error");
     }
   };
 

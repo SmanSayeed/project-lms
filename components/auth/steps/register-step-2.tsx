@@ -20,9 +20,15 @@ import {
   RegisterSchemaStepTwo,
   RegisterSchemaStepTwoInput,
 } from "@/lib/schema";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { setRegistrationData, setStepTwo } from "@/redux/reducers/authSlice";
+import { RootState } from "@/redux/store";
 
 export default function RegisterStepTwo() {
   const [genderErr, setGenderErr] = useState(true);
+
+  const router = useRouter();
 
   const {
     handleSubmit,
@@ -33,12 +39,24 @@ export default function RegisterStepTwo() {
     resolver: zodResolver(RegisterSchemaStepTwo),
   });
 
+  const dispatch = useDispatch();
+  const prevStepInfo = useSelector(
+    (state: RootState) => state.auth.registrationData
+  );
+
   const onSubmit = (data: RegisterSchemaStepTwoInput) => {
-    try {
-      console.log("Validated data \n", data);
-    } catch (error) {
-      console.error(error);
-    }
+    dispatch(
+      setRegistrationData({
+        ...prevStepInfo,
+        firstName: data.first_name,
+        lastName: data.last_name,
+        birthDate: data.birth_date,
+        gender: data.gender,
+      })
+    );
+    dispatch(setStepTwo(true));
+    console.log("Validated data \n", data);
+    router.push("/register/step-3");
   };
 
   return (
@@ -93,10 +111,7 @@ export default function RegisterStepTwo() {
             <div className="mb-3">
               <Label className=" mb-1.5">Date of birth</Label>
 
-              <Input
-                {...register("birth_date")}
-                type="date"
-              />
+              <Input {...register("birth_date")} type="date" />
               {errors && errors.birth_date && (
                 <p className="text-sm font-medium text-red-500 my-1.5">
                   {errors.birth_date.message}
